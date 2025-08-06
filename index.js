@@ -27,6 +27,15 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+
+
+
+// ✅ CORS Setup for Vercel
+app.use(cors({
+  origin: 'https://loin-logic-nags-9wbb.vercel.app',
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type'],
+}));
 // -------------------- CAREER ROUTE --------------------
 app.post("/send-career", upload.single("resume"), (req, res) => {
   const { name, email, phone } = req.body;
